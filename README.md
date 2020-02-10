@@ -1,1 +1,1 @@
-# cloud-schema-builds
+# gh-schema-docs

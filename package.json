@@ -1,0 +1,26 @@
+{
+  "name": "cloud-schema-docs",
+  "version": "1.0.0",
+  "dependencies": {
+    "@babel/runtime": "^7.6.3",
+    "chalk": "2.4.2",
+    "git-repo-info": "^2.1.1",
+    "lodash": "^4.17.15",
+    "rapidoc": "^5.0.4",
+    "redoc": "^2.0.0-rc.8-1",
+    "remote-origin-url": "^2.0.0",
+    "shelljs": "^0.7.0",
+    "swagger-repo": "^1.5.1",
+    "swagger-ui-dist": "3.24.0",
+    "update-notifier": "3.0.1",
+    "yargs-parser": "15.0.0"
+  },
+  "bin": "./bin/cloud-schema-docs.js",
+  "main": "./src/index.js",
+  "private": true,
+  "scripts": {
+    "build": "node src/buildui.js",
+    "fetch": "node src/fetchpages.js",
+    "swagger": "swagger-repo"
+  }
+}
