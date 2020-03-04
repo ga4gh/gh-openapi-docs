@@ -3,7 +3,7 @@
 const updater = require('update-notifier');
 const parseArgs = require('yargs-parser');
 const pkg = require('../package.json');
-const release = require('../src');
+const release = require('../lib');
 
 const aliases = {
   c: 'config',

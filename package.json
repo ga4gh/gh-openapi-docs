@@ -5,9 +5,14 @@
     "@babel/runtime": "^7.6.3",
     "chalk": "2.4.2",
     "git-repo-info": "^2.1.1",
+    "json-refs": "^3.0.15",
+    "json-schema-ref-parser": "^7.1.3",
+    "loader-utils": "^1.4.0",
     "lodash": "^4.17.15",
-    "rapidoc": "^5.0.4",
-    "redoc": "^2.0.0-rc.8-1",
+    "oas-linter": "^3.0.2",
+    "oas-resolver": "^2.2.7",
+    "oas-validator": "^3.3.3",
+    "redoc-cli": "^0.9.6",
     "remote-origin-url": "^2.0.0",
     "shelljs": "^0.7.0",
     "swagger-repo": "^1.5.1",
@@ -19,8 +24,10 @@
   "main": "./src/index.js",
   "private": true,
   "scripts": {
-    "build": "node src/buildui.js",
     "fetch": "node src/fetchpages.js",
-    "swagger": "swagger-repo"
+    "swagger": "swagger-repo",
+    "redoc": "redoc-cli bundle",
+    "build:swagger": "node src/swagger-ui.js",
+    "build:redoc": "node src/redoc-ui.js"
   }
 }

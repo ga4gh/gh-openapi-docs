@@ -108,6 +108,7 @@ dist
 
 # Documentation build system artifacts
 swagger-ui
+redoc-ui
 shared
 swagger.*
 build
