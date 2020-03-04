@@ -1,5 +1,5 @@
 {
-  "name": "cloud-schema-docs",
+  "name": "gh-openapi-docs",
   "version": "1.0.0",
   "dependencies": {
     "@babel/runtime": "^7.6.3",
@@ -15,12 +15,12 @@
     "redoc-cli": "^0.9.6",
     "remote-origin-url": "^2.0.0",
     "shelljs": "^0.7.0",
-    "swagger-repo": "^1.5.1",
+    "swagger-repo": "2.0.0-rc.15",
     "swagger-ui-dist": "3.24.0",
     "update-notifier": "3.0.1",
     "yargs-parser": "15.0.0"
   },
-  "bin": "./bin/cloud-schema-docs.js",
+  "bin": "./bin/gh-openapi-docs.js",
   "main": "./src/index.js",
   "private": true,
   "scripts": {

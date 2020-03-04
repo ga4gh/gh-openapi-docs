@@ -35,7 +35,7 @@ Where `branchPath` is the repo root if the current branch is `master`, otherwise
 Run the command...
 
 ```shell
-cloud-schema-docs
+gh-openapi-docs
 ```
 
 You should see console logs that look like this:
