@@ -10,7 +10,7 @@ info:
     name: Apache 2.0
     url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
   x-logo:
-    url: 'https://apis.guru/openapi-template/logo.png'
+    url: 'https://www.openapis.org/wp-content/uploads/sites/3/2018/02/OpenAPI_Logo_Pantone-1.png'
   description: >
     This is an **example** API to demonstrate features of OpenAPI specification
 
@@ -59,9 +59,15 @@ tags:
     description: Example echo operations
   - name: User
     description: Operations about user
-  - name: Motivation
+  - name: Example Chapter
     description: |
-      # Section 1
+      # Overview
+
+      Here is an example of additional context that can be added with markdown.
+
+      ## Basic syntax
+
+      You can use standard markdown tables and formatting
 
       | Tables   |      Are      |  Cool |
       |----------|:-------------:|------:|
@@ -69,13 +75,10 @@ tags:
       | col 2 is |    centered   |   $12 |
       | col 3 is | right-aligned |    $1 |
 
+      ## Images
 
-      <img style='float: right;' width='300' src='figure1.png'/>
-      Data sharing requires portable data, consistent with the FAIR data
-      principles (findable, accessible, interoperable, reusable). Today’s
-      researchers and clinicians are surrounded by potentially useful data,
-      but often need bespoke tools and processes to work with each dataset.
-      And today’s data publishers don’t have a reliable way to make their data useful to all (and only) the people they choose."
+      <img style='float: right;' width='250' src='../../../test/test-shared/OpenAPI_Logo_Pantone-1.png'/>
+      This is a block of text arranged next to an image (hosted in this repo).
 
 servers:
   - url: 'http://example.com/api/v1'
@@ -87,7 +90,7 @@ x-tagGroups:
       - User
   - name: Appendix
     tags:
-      - Motivation
+      - Example Chapter
 paths:
   /echo:
     post:
