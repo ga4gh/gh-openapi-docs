@@ -26,7 +26,7 @@
   "scripts": {
     "fetch": "node src/fetchpages.js",
     "swagger": "swagger-repo",
-    "redoc": "redoc-cli bundle",
+    "redoc": "redoc-cli",
     "build:swagger": "node src/swagger-ui.js",
     "build:redoc": "node src/redoc-ui.js"
   }
