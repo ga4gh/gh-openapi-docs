@@ -114,3 +114,7 @@ swagger.*
 build
 
 .DS_Store
+.spec-docs.json
+bin
+lib
+preview

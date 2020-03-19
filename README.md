@@ -6,6 +6,7 @@ After cloning this repo...
 
 ```shell
 npm install -g . && npm install -g swagger-repo && npm install -g redoc-cli
+npm run cleanBuildPackage
 ```
 
 ## Set up
@@ -36,7 +37,7 @@ Where `branchPath` is the repo root if the current branch is `master`, otherwise
 Run the command...
 
 ```shell
-gh-openapi-docs
+./bin/gh-openapi-docs
 ```
 
 You should see console logs that look like this:
