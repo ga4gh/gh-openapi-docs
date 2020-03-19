@@ -117,4 +117,5 @@ build
 .spec-docs.json
 bin
 lib
+!src/lib
 preview
