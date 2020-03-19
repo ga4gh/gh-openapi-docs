@@ -1,13 +1,12 @@
-#!/usr/bin/env node
 'use strict';
-const shell = require('shelljs');
-const path = require('path');
-const config = require('./config');
-const Log = require('./log');
+import shell from 'shelljs';
+import path from 'path';
+import config from './config';
+import Log from './log';
 
 const log = new Log();
 
-const fetchPages = function() {
+const fetchPages = () => {
     shell.rm('-rf', '.ghpages-tmp');
     shell.mkdir('-p', '.ghpages-tmp');
     var startDir = shell.pwd();
@@ -21,7 +20,7 @@ const fetchPages = function() {
 
 // TODO: add logic to move all rendered artifacts to correct location
 // prior to gh-pages deploy
-const stagePages = function() {
+const stagePages = () => {
     if (config.branch != 'gh-pages' ) {
 
         var docsPath = path.join(config.branchPath, config.docsRoot);
@@ -34,6 +33,4 @@ const stagePages = function() {
 }
 
 // stagePages()
-module.exports.fetchPages = fetchPages;
-module.exports.stagePages = stagePages;
-
+export { fetchPages, stagePages };

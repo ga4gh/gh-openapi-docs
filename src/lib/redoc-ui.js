@@ -1,15 +1,14 @@
-#!/usr/bin/env node
+// #!/usr/bin/env node
 'use strict';
-const shell = require('shelljs');
-const path = require('path');
-const config = require('./config');
-const Log = require('./log');
+import shell from 'shelljs';
+import path from 'path';
+import config from './config';
+import Log from './log';
 
 const log = new Log();
-
 var OPENAPI_YAML_PATH = path.join(config.branchPath, 'openapi.yaml');
 
-const setupUI = function() {
+const setupUI = () => {
     var uiPath = path.join(config.branchPath, config.docsRoot);
     shell.mkdir('-p', uiPath);
     var indexPath = path.join(uiPath, 'index.html');
@@ -23,4 +22,4 @@ const setupUI = function() {
     });
 };
 
-module.exports.setupUI = setupUI;
+export { setupUI };

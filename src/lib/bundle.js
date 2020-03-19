@@ -1,16 +1,16 @@
-#!/usr/bin/env node
+// #!/usr/bin/env node
 'use strict';
-const shell = require('shelljs');
-const path = require('path');
-const config = require('./config');
-const Log = require('./log');
+import shell from "shelljs";
+import path from 'path';
+import config from './config';
+import Log from './log';
 
 const log = new Log();
 
 var OPENAPI_JSON_PATH = path.join(config.branchPath, 'openapi.json');
 var OPENAPI_YAML_PATH = path.join(config.branchPath, 'openapi.yaml');
 
-const bundleSpec = async function() {
+const bundleSpec = async () => {
     log.preview({
         'title': 'Branch folder',
         'text': config.branchPath
@@ -20,10 +20,12 @@ const bundleSpec = async function() {
     shell.mkdir('-p', specDir);
 
     var specPath = path.join(config.root, config.apiSpecPath);
+    
     log.preview({
         'title': 'Spec location',
         'text': specPath
     })
+    
     shell.cp(specPath, path.join(config.root, 'spec/openapi.yaml'));
 
     log.log("\nBundling API spec...");
@@ -41,4 +43,4 @@ const bundleSpec = async function() {
 };
 
 bundleSpec();
-module.exports.bundleSpec = bundleSpec;
+export default bundleSpec;

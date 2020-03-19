@@ -1,5 +1,5 @@
-const pkg = require('../package.json');
-const Log = require('./log');
+import pkg from '../../package.json';
+import Log from './log';
 
 const log = new Log();
 
@@ -11,6 +11,6 @@ const helpText = `Cloud Schema Docs - v${pkg.version}
   -v --version           Print version number
   -V --verbose           Verbose output`;
 
-module.exports.version = function() { return log.log(`v${pkg.version}`) };
-
-module.exports.help = function() { return log.log(helpText) };
+const version = () => log.log(`v${pkg.version}`);
+const help = () => log.log(helpText);
+export { version, help };

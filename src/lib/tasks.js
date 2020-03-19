@@ -1,11 +1,11 @@
-const _ = require('lodash');
-const Logger = require('./log');
-const Config = require('./config');
-const { fetchPages } = require('./gh-pages');
-const { bundleSpec } = require('./bundle');
-const { setupUI } = require('./redoc-ui');
+import _ from 'lodash';
+import Logger from './log';
+import Config from './config';
+import { fetchPages } from './gh-pages';
+import bundleSpec from './bundle';
+import { setupUI } from './redoc-ui';
 
-const runTasks = function(opts, di) {
+const runTasks = (opts, di) => {
   let container = {};
 
   try {
@@ -31,4 +31,4 @@ const runTasks = function(opts, di) {
   }
 };
 
-module.exports = runTasks;
+export default runTasks;

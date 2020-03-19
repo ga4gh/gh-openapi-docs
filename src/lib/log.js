@@ -1,6 +1,6 @@
-const { EOL } = require('os');
-const chalk = require('chalk');
-const { isObject, last, filter, isString, lowerCase, upperFirst } = require('lodash');
+import { EOL } from 'os';
+import chalk from 'chalk';
+import { isObject, last, filter, isString, lowerCase, upperFirst } from 'lodash';
 
 class Logger {
   constructor({ isCI = true, isVerbose = false, verbosityLevel = 0, isDryRun = false } = {}) {
@@ -37,4 +37,4 @@ class Logger {
   }
 }
 
-module.exports = Logger;
+export default Logger;

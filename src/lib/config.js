@@ -1,12 +1,14 @@
-const _ = require('lodash');
-const path = require('path');
-const envConfig = require('./environment').default
+import _ from 'lodash';
+import path from 'path';
+import envConfig from './environment';
+import fs from 'fs';
 /*eslint no-process-env:0*/
 
 // All configurations will extend these options
 // ============================================
-const userConfig = require(`${envConfig.root}/.spec-docs.json`) || {};
-localConfig = {
+const userConfigPath = `${envConfig.root}/.spec-docs.json`;
+const userConfig = fs.existsSync(userConfigPath) ? JSON.parse(fs.readFileSync(userConfigPath)) : {};
+const localConfig = {
   apiSpecPath: userConfig.apiSpecPath || '',
   docsRoot: userConfig.docsRoot || 'docs',
   uiRoot: userConfig.uiRoot || 'swagger-ui',
@@ -16,7 +18,7 @@ localConfig = {
   contactUrl: userConfig.contactUrl || ''
 };
 
-const constructBranchPath = function(defaultBranch, currentBranch, root, branchPathBase) {
+const constructBranchPath = (defaultBranch, currentBranch, root, branchPathBase) => {
   if (currentBranch == defaultBranch) {
     return root;
   } else {
@@ -41,4 +43,4 @@ const config = _.merge(
 );
 
 console.log(config);
-module.exports = config;
+export default config;

@@ -1,9 +1,8 @@
-#!/usr/bin/env node
-
-const updater = require('update-notifier');
-const parseArgs = require('yargs-parser');
-const pkg = require('../package.json');
-const release = require('../lib');
+import '@babel/polyfill';
+// const updater = require('update-notifier');
+import parseArgs from 'yargs-parser';
+import pkg from '../package.json';
+import release from './lib';
 
 const aliases = {
   c: 'config',
@@ -13,7 +12,7 @@ const aliases = {
   V: 'verbose'
 };
 
-const parseCliArguments = function(args) {
+const parseCliArguments = args => {
   const options = parseArgs(args, {
     boolean: ['dry-run'],
     alias: aliases,
@@ -27,8 +26,8 @@ const parseCliArguments = function(args) {
     }
   });
   return options;
-};
+}
 
 const options = parseCliArguments([].slice.call(process.argv, 2));
-updater({ pkg: pkg }).notify();
-release(options).then(function() { process.exit(0) }, function() { process.exit(1) });
+// updater({ pkg: pkg }).notify();
+release(options).then(() => process.exit(0), () => process.exit(1));

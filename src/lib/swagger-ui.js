@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 'use strict';
-const shell = require('shelljs');
-const path = require('path');
-const config = require('./config');
-const Log = require('./log');
+import shell from 'shelljs';
+import path from 'path';
+import config from './config';
+import Log from './log';
 
 const log = new Log();
 
@@ -11,13 +11,13 @@ var SWAGGER_UI_DIST = require("swagger-ui-dist").getAbsoluteFSPath();
 var SHARED_UI_PATH = path.join(config.root, 'shared', config.uiRoot);
 var SWAGGER_JSON_PATH = path.join(config.branchPath, 'openapi.json');
 
-const getAssets = function() {
+const getAssets = () => {
     shell.rm('-rf', SHARED_UI_PATH);
     shell.mkdir('-p', path.join(config.root, 'shared'));
     shell.cp('-R', SWAGGER_UI_DIST, SHARED_UI_PATH);
 };
 
-const setupUI = function() {
+const setupUI = () => {
     getAssets()
     var uiPath = path.join(config.branchPath, config.uiRoot);
     shell.mkdir('-p', uiPath);
@@ -44,5 +44,4 @@ const setupUI = function() {
 };
 
 // setupUI()
-module.exports.getAssets = getAssets;
-module.exports.setupUI = setupUI;
+export { getAssets, setupUI };
