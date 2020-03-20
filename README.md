@@ -5,7 +5,7 @@
 After cloning this repo...
 
 ```shell
-npm i && npm install -g swagger-repo && npm install -g redoc-cli
+npm i
 npm run cleanBuildPackage
 ```
 
