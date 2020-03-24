@@ -32,7 +32,8 @@
     "build": "npx webpack --mode=development",
     "package": "npx pkg -o ./bin/gh-openapi-docs .",
     "cleanBuild": "npm run clean && npm run build",
-    "cleanBuildPackage": "npm run cleanBuild && npm run package"
+    "cleanBuildPackage": "npm run cleanBuild && npm run package",
+    "prepublish": "npm run cleanBuildPackage"
   },
   "devDependencies": {
     "@babel/core": "^7.8.7",
