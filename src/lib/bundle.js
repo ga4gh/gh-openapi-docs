@@ -20,12 +20,12 @@ const bundleSpec = async () => {
     shell.mkdir('-p', specDir);
 
     var specPath = path.join(config.root, config.apiSpecPath);
-    
+
     log.preview({
         'title': 'Spec location',
         'text': specPath
     })
-    
+
     shell.cp(specPath, path.join(config.root, 'spec/openapi.yaml'));
 
     log.log("\nBundling API spec...");
@@ -42,5 +42,4 @@ const bundleSpec = async () => {
     shell.rm('-rf', specDir);
 };
 
-bundleSpec();
 export default bundleSpec;
