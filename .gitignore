@@ -111,6 +111,7 @@ swagger-ui
 redoc-ui
 shared
 swagger.*
+openapi*
 build
 
 .DS_Store
@@ -119,3 +120,4 @@ bin
 lib
 !src/lib
 preview
+docs
