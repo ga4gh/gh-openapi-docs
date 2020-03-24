@@ -22,7 +22,6 @@
     "yargs-parser": "15.0.0"
   },
   "bin": "./dist/gh-openapi-docs.js",
-  "private": true,
   "scripts": {
     "fetch": "node src/fetchpages.js",
     "swagger": "swagger-repo",
