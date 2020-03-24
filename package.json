@@ -1,6 +1,6 @@
 {
   "name": "gh-openapi-docs",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "dependencies": {
     "@babel/runtime": "^7.6.3",
     "chalk": "2.4.2",
