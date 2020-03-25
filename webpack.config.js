@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
     target: "node",
@@ -6,7 +7,8 @@ module.exports = {
         'gh-openapi-docs': './src/gh-openapi-docs.js'
     },
     output: {
-        path: path.resolve(__dirname, 'dist')
+        path: path.resolve(__dirname, 'dist'),
+        filename: 'bundle.js'
     },
     resolve: {
         modules: [
@@ -32,5 +34,8 @@ module.exports = {
                 }
             }
         ]
-    }
+    },
+    plugins: [
+        new webpack.BannerPlugin({ banner: "#!/usr/bin/env node", raw: true })
+    ]
 }
