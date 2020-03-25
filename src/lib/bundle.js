@@ -34,10 +34,10 @@ const bundleSpec = async () => {
         'text': OPENAPI_JSON_PATH
     });
     shell.exec(
-        `npm run swagger bundle --        -b ${specDir} -o ${OPENAPI_JSON_PATH}`
+        `openapi bundle -f --output ${OPENAPI_JSON_PATH} ${config.apiSpecPath}`
     );
     shell.exec(
-        `npm run swagger bundle -- --yaml -b ${specDir} -o ${OPENAPI_YAML_PATH}`
+        `openapi bundle -f --output ${OPENAPI_YAML_PATH} ${config.apiSpecPath}`
     );
     shell.rm('-rf', specDir);
 };
