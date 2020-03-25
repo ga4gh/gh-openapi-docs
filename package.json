@@ -40,8 +40,5 @@
     "babel-loader": "^8.0.6",
     "webpack": "^4.42.0",
     "webpack-cli": "^3.3.10"
-  },
-  "files": [
-    "dist"
-  ]
+  }
 }
