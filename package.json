@@ -29,8 +29,7 @@
     "build:redoc": "node src/redoc-ui.js",
     "clean": "rm -rf dist/* bin/*",
     "build": "npx webpack --mode=development",
-    "cleanBuild": "npm run clean && npm run build",
-    "prepublish": "npm run cleanBuild"
+    "cleanBuild": "npm run clean && npm run build"
   },
   "devDependencies": {
     "@babel/core": "^7.8.7",
