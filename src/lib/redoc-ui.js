@@ -14,7 +14,7 @@ const setupUI = () => {
     var indexPath = path.join(uiPath, 'index.html');
     log.log(`Generating OpenAPI docs index at '${indexPath}'`);
     shell.exec(
-        `npm run redoc bundle -- ${OPENAPI_YAML_PATH} --output ${indexPath}`
+        `redoc-cli bundle --output ${indexPath} ${OPENAPI_YAML_PATH}`
     );
     log.preview({
         'title': 'OpenAPI docs folder contents',
