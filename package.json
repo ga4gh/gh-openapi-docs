@@ -22,6 +22,7 @@
     "yargs-parser": "15.0.0"
   },
   "bin": "./dist/bundle.js",
+  "main": "./src/lib/index.js",
   "scripts": {
     "fetch": "node src/fetchpages.js",
     "build:swagger": "node src/swagger-ui.js",
