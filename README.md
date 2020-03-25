@@ -2,11 +2,16 @@
 
 ## Installation
 
-After cloning this repo...
+Install command-line dependencies:
 
 ```shell
-npm i && npm install -g swagger-repo && npm install -g redoc-cli
-npm run cleanBuildPackage
+npm install -g @redocly/openapi-cli && npm install -g redoc-cli
+```
+
+Install CLI:
+
+```shell
+npm install -g gh-openapi-docs
 ```
 
 ## Set up
@@ -37,7 +42,7 @@ Where `branchPath` is the repo root if the current branch is `master`, otherwise
 Run the command...
 
 ```shell
-./bin/gh-openapi-docs
+gh-openapi-docs
 ```
 
 You should see console logs that look like this:
