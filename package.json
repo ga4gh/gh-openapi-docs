@@ -16,7 +16,7 @@
     "redoc-cli": "^0.9.6",
     "remote-origin-url": "^2.0.0",
     "shelljs": "^0.7.0",
-    "swagger-repo": "2.0.0-rc.15",
+    "@redocly/openapi-cli": "0.8.4",
     "swagger-ui-dist": "3.24.0",
     "update-notifier": "3.0.1",
     "yargs-parser": "15.0.0"
@@ -24,8 +24,6 @@
   "bin": "./dist/gh-openapi-docs.js",
   "scripts": {
     "fetch": "node src/fetchpages.js",
-    "swagger": "swagger-repo",
-    "redoc": "redoc-cli",
     "build:swagger": "node src/swagger-ui.js",
     "build:redoc": "node src/redoc-ui.js",
     "clean": "rm -rf dist/* bin/*",
