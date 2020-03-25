@@ -21,7 +21,7 @@
     "update-notifier": "3.0.1",
     "yargs-parser": "15.0.0"
   },
-  "bin": "./dist/gh-openapi-docs.js",
+  "bin": "./dist/bundle.js",
   "scripts": {
     "fetch": "node src/fetchpages.js",
     "build:swagger": "node src/swagger-ui.js",
