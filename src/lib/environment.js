@@ -4,6 +4,7 @@ import getRepoInfo from 'git-repo-info';
 /*eslint no-process-env:0*/
 
 var repoInfo = getRepoInfo();
+console.log(repoInfo);
 
 const env = process.env.NODE_ENV;
 const repoOrigin = origin.sync();
