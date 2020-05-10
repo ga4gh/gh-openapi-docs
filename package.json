@@ -28,7 +28,7 @@
     "build:swagger": "node src/swagger-ui.js",
     "build:redoc": "node src/redoc-ui.js",
     "clean": "rm -rf dist/* bin/*",
-    "build": "npx webpack --mode=development",
+    "build": "npx webpack-cli --mode=development",
     "cleanBuild": "npm run clean && npm run build"
   },
   "devDependencies": {
