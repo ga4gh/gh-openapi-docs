@@ -119,5 +119,6 @@ build
 bin
 lib
 !src/lib
+!test/mocha/src/lib
 preview
 docs

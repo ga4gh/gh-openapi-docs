@@ -3,5 +3,10 @@ node_js:
     - 10
 before_script:
     - npm i
+    - npm install -g @redocly/openapi-cli
+    - npm install -g redoc-cli
+    - npm install -g gh-openapi-docs
 script:
-    npm test
+    npm run coverage
+after_success:
+    npm run pushCoverageReport

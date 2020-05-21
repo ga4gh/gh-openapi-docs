@@ -30,4 +30,4 @@ const parseCliArguments = args => {
 
 const options = parseCliArguments([].slice.call(process.argv, 2));
 // updater({ pkg: pkg }).notify();
-release(options).then(() => process.exit(0), () => process.exit(1));
+process.env.MOCHA_TEST !== true ? release(options).then(() => process.exit(0), () => process.exit(1)) : null;
