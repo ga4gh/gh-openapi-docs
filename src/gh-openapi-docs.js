@@ -28,10 +28,6 @@ const parseCliArguments = args => {
   return options;
 }
 
-console.log(`***`);
-console.log(`TRAVIS_BRANCH: ${process.env.TRAVIS_BRANCH}`);
-console.log(`***`);
-
 const options = parseCliArguments([].slice.call(process.argv, 2));
 // updater({ pkg: pkg }).notify();
 process.env.MOCHA_TEST !== true ? release(options).then(() => process.exit(0), () => process.exit(1)) : null;
