@@ -42,6 +42,5 @@ const config = _.merge(
   deployConfig
 );
 
-console.log("Config:");
 console.log(config);
 export default config;

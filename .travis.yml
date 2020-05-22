@@ -2,14 +2,8 @@ language: node_js
 node_js:
     - 10
 before_script:
-    - echo "Before Script"
-    - echo "$TRAVIS_BRANCH"
-    - echo "$TRAVIS_COMMIT"
     - git checkout $TRAVIS_BRANCH
     - npm i
-    # - npm install -g @redocly/openapi-cli
-    # - npm install -g redoc-cli
-    # - npm install -g gh-openapi-docs
 script:
     npm run coverage
 after_success:

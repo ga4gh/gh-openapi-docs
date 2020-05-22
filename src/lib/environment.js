@@ -5,7 +5,6 @@ import getRepoInfo from 'git-repo-info';
 
 var repoInfo = getRepoInfo();
 repoInfo.branch = repoInfo.branch || process.env.TRAVIS_BRANCH;
-console.log("Repo Info:");
 console.log(repoInfo);
 
 const env = process.env.NODE_ENV;
