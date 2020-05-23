@@ -1,4 +1,8 @@
-# gh-openapi-docs
+# GitHub OpenAPI Docs
+
+[![Build Status](https://travis-ci.org/ga4gh/gh-openapi-docs.svg?branch=master)](https://travis-ci.org/ga4gh/gh-openapi-docs) [![Coverage Status](https://coveralls.io/repos/github/ga4gh/gh-openapi-docs/badge.svg?branch=master&service=github)](https://coveralls.io/github/ga4gh/gh-openapi-docs?branch=master&service=github)
+
+This package can be used to build ReDoc API documentation for an OpenAPI specification (no server implementation required) and host on GitHub Pages.
 
 ## Installation
 
