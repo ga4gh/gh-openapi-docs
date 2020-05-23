@@ -13,10 +13,11 @@
     "oas-linter": "^3.0.2",
     "oas-resolver": "^2.2.7",
     "oas-validator": "^3.3.3",
-    "redoc-cli": "^0.9.6",
+    "redoc-cli": "^0.9.7",
     "remote-origin-url": "^2.0.0",
     "shelljs": "^0.7.0",
     "@redocly/openapi-cli": "0.8.4",
+    "swagger-repo": "^2.0.0-rc.15",
     "swagger-ui-dist": "3.24.0",
     "update-notifier": "3.0.1",
     "yargs-parser": "15.0.0"
@@ -29,7 +30,10 @@
     "build:redoc": "node src/redoc-ui.js",
     "clean": "rm -rf dist/* bin/*",
     "build": "npx webpack-cli --mode=development",
-    "cleanBuild": "npm run clean && npm run build"
+    "cleanBuild": "npm run clean && npm run build",
+    "test": "npx mocha-webpack --webpack-config webpack.config-test.js --recursive \"src\" \"test/mocha\" --exit",
+    "coverage": "npx nyc npm run test",
+    "pushCoverageReport": "npx nyc report --reporter=text-lcov | npx coveralls"
   },
   "devDependencies": {
     "@babel/core": "^7.8.7",
@@ -37,8 +41,20 @@
     "@babel/plugin-transform-runtime": "^7.8.3",
     "@babel/polyfill": "^7.8.7",
     "@babel/preset-env": "^7.8.7",
+    "@babel/register": "^7.9.0",
     "babel-loader": "^8.0.6",
+    "cross-env": "^7.0.2",
+    "istanbul-instrumenter-loader": "^3.0.1",
+    "mocha": "^7.1.1",
+    "mocha-webpack": "^2.0.0-beta.0",
+    "nyc": "^15.0.1",
+    "pkg": "^4.4.4",
     "webpack": "^4.42.0",
-    "webpack-cli": "^3.3.10"
+    "webpack-cli": "^3.3.11",
+    "webpack-node-externals": "^1.7.2"
+  },
+  "nyc": {
+    "instrument": false,
+    "sourceMap": false
   }
 }

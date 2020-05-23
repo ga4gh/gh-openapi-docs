@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import path from 'path';
-import envConfig from './environment';
+import envConfig from '@lib/environment'
 import fs from 'fs';
 /*eslint no-process-env:0*/
 

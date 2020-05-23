@@ -11,6 +11,9 @@ module.exports = {
         filename: 'bundle.js'
     },
     resolve: {
+        alias: {
+            '@lib': path.resolve(__dirname, 'src/lib')
+        },
         modules: [
             'node_modules'
         ]
