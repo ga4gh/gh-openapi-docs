@@ -16,4 +16,4 @@ properties:
     minLength: 1
     example: Smith
   email:
-    $ref: '#/components/schemas/Email'
+    $ref: './Email.yaml'
