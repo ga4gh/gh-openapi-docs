@@ -10,7 +10,8 @@ info:
     name: Apache 2.0
     url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
   x-logo:
-    url: 'https://www.openapis.org/wp-content/uploads/sites/3/2018/02/OpenAPI_Logo_Pantone-1.png'
+    url: >-
+      https://www.openapis.org/wp-content/uploads/sites/3/2018/02/OpenAPI_Logo_Pantone-1.png
   description: |
     This is an **example** API to demonstrate features of OpenAPI specification
 externalDocs:
@@ -48,7 +49,31 @@ tags:
       and interact with the remote service with a minimal amount of
       implementation logic. Similar to what interfaces have done for lower-level
       programming, OpenAPI removes the guesswork in calling the service.
-  - name: Markdown Description
+  - name: Path Files
+    description: >
+
+      * Write each path specification in separate file
+
+      * Filename is mapped to path by replacing `@` with `/`, i.e.
+      `user@{username}.yaml` matches to `user/{username}` path
+  - name: Component Files
+    description: >
+      Define reusable components in separate files in the `components` folder.
+
+
+      * You can create the following subfolders here:
+        - `schemas` - reusable [Schema Objects](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.0.md#schemaObject)
+        - `responses` - reusable [Response Objects](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.0.md#responseObject)
+        - `parameters` - reusable [Parameter Objects](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.0.md#parameterObject)
+        - `examples` - reusable [Example Objects](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.0.md#exampleObject)
+        - `headers` - reusable [Header Objects](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.0.md#headerObject)
+        - `requestBodies` - reusable [Request Body Objects](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.0.md#requestBodyObject)
+        - `links` - reusable [Link Objects](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.0.md#linkObject)
+        - `callbacks` - reusable [Callback Objects](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.0.md#callbackObject)
+        - `securitySchemes` - reusable [Security Scheme Objects](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.0.md#securitySchemeObject)
+      * Filename of files inside the folders represent component name, i.e.
+      `Customer.yaml`
+  - name: Tag Files
     description: >-
       By using separate markdown documents and using `$ref` pointers to write
       the `description` field for individual `tags` in the root specification
@@ -72,7 +97,7 @@ tags:
         # This last section I'll include at the end in the appendix
         - name: Markdown Descriptions
           description:
-            $ref: ./tags/markdown_desc.md
+            $ref: ./tags/markdown_ex.md
       # 'x-tagGroups' instructs redoc on how to arrange and order sections
 
       x-tagGroups:
@@ -85,11 +110,11 @@ tags:
             - User
         - name: Appendix
           tags:
-            - Markdown Descriptions
+            - Markdown Examples
       ```
 
 
-      `markdown_desc.md` includes headers and content in standard syntax, Which
+      `markdown_ex.md` includes headers and content in standard syntax, Which
       are inserted as markdown (and can be rendered as HTML) in the bundled
       spec:
 
@@ -113,18 +138,28 @@ tags:
 
       Learn more about working with markdown in the [GitHub
       Guides](https://guides.github.com/features/mastering-markdown/).
+
+
+      # Image Example
+
+
+      <img src="/shared/1200px-Markdown-mark.svg.png"
+           alt="Markdown Logo"
+           style="float: left; margin-right: 10px;" />
 x-tagGroups:
   - name: Overview
     tags:
       - Introduction
+      - OpenAPI Specification
   - name: Operations
     tags:
       - Echo
       - User
   - name: Appendix
     tags:
-      - OpenAPI Specification
-      - Markdown Description
+      - Path Files
+      - Component Files
+      - Tag Files
 paths:
   '/users/{username}':
     parameters:

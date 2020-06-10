@@ -1,7 +1,6 @@
-Reusable components
-===========
+Define reusable components in separate files in the `components` folder.
 
-* You can create the following folders here:
+* You can create the following subfolders here:
   - `schemas` - reusable [Schema Objects](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.0.md#schemaObject)
   - `responses` - reusable [Response Objects](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.0.md#responseObject)
   - `parameters` - reusable [Parameter Objects](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.0.md#parameterObject)
