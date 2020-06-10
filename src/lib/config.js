@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import path from 'path';
-import envConfig from '@lib/environment'
+import envConfig from './environment'
 import fs from 'fs';
 /*eslint no-process-env:0*/
 
@@ -42,5 +42,4 @@ const config = _.merge(
   deployConfig
 );
 
-console.log(config);
 export default config;
