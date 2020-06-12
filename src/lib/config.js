@@ -13,6 +13,7 @@ const localConfig = {
   docsRoot: userConfig.docsRoot || 'docs',
   uiRoot: userConfig.uiRoot || 'swagger-ui',
   redocRoot: userConfig.redocRoot || 'redoc-ui',
+  redocTheme: userConfig.redocTheme || 'default',
   defaultBranch: userConfig.defaultBranch || 'master',
   branchPathBase: userConfig.branchPath || 'preview',
   contactUrl: userConfig.contactUrl || ''
