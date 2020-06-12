@@ -23,14 +23,14 @@ const setupUI = () => {
     var uiPath = path.join(config.branchPath, config.docsRoot);
     shell.mkdir('-p', uiPath);
     var indexPath = path.join(uiPath, 'index.html');
-    log.log(`Generating OpenAPI docs index at '${indexPath}'`);
-    shell.exec(
-        `redoc-cli bundle --output ${indexPath} ${OPENAPI_YAML_PATH} ${redocOpts}`
-    );
     log.preview({
-        'title': 'OpenAPI docs folder contents',
-        'text': shell.ls(uiPath).stdout
+        title: 'Generating standalone ReDoc HTML',
+        text: `${indexPath}\n`
     });
+    shell.exec(
+        `redoc-cli bundle --output ${indexPath} ${OPENAPI_YAML_PATH} ${redocOpts}`,
+        {silent: true}
+    );
 };
 
 export { setupUI };

@@ -12,8 +12,8 @@ var OPENAPI_YAML_PATH = path.join(config.branchPath, 'openapi.yaml');
 
 const bundleSpec = async () => {
     log.preview({
-        'title': 'Branch folder',
-        'text': config.branchPath
+        'title': '\nBranch folder',
+        'text': `${config.branchPath}/`
     })
     shell.mkdir('-p', config.branchPath);
     var specDir = path.join(config.root, 'spec');
@@ -22,22 +22,24 @@ const bundleSpec = async () => {
     var specPath = path.join(config.root, config.apiSpecPath);
 
     log.preview({
-        'title': 'Spec location',
+        'title': '\nAPI spec (root) location',
         'text': specPath
     })
 
     shell.cp(specPath, path.join(config.root, 'spec/openapi.yaml'));
 
-    log.log("\nBundling API spec...");
+    log.info("\nBundling API spec...");
     log.preview({
-        'title': 'Storing to',
-        'text': OPENAPI_JSON_PATH
+        'title': "\nStoring bundled 'openapi.json' and 'openapi.yaml' in",
+        'text': `${config.branchPath}/\n`
     });
     shell.exec(
-        `openapi bundle -f --output ${OPENAPI_JSON_PATH} ${config.apiSpecPath}`
+        `openapi bundle -f --output ${OPENAPI_JSON_PATH} ${config.apiSpecPath}`,
+        {silent: true}
     );
     shell.exec(
-        `openapi bundle -f --output ${OPENAPI_YAML_PATH} ${config.apiSpecPath}`
+        `openapi bundle -f --output ${OPENAPI_YAML_PATH} ${config.apiSpecPath}`,
+        {silent: true}
     );
     shell.rm('-rf', specDir);
 };
