@@ -15,8 +15,7 @@ const runTasks = (opts, di) => {
     container.log = container.log || new Logger();
     const { log } = container;
 
-    console.log(container.config);
-    log.obtrusive(`Preparing docs for API spec at '${container.config.apiSpecPath}' (${container.config.branch})`);
+    log.info(`Preparing docs for API spec at '${container.config.apiSpecPath}' (${container.config.branch})`);
     fetchPages();
     bundleSpec();
     setupUI();
