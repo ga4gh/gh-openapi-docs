@@ -1,6 +1,6 @@
 # GitHub OpenAPI Docs
 
-[![Build Status](https://travis-ci.org/ga4gh/gh-openapi-docs.svg?branch=master)](https://travis-ci.org/ga4gh/gh-openapi-docs) [![Coverage Status](https://coveralls.io/repos/github/ga4gh/gh-openapi-docs/badge.svg?branch=master&service=github)](https://coveralls.io/github/ga4gh/gh-openapi-docs?branch=master&service=github)
+[![Build Status](https://travis-ci.org/ga4gh/gh-openapi-docs.svg?branch=master)](https://travis-ci.org/ga4gh/gh-openapi-docs) [![Coverage Status](https://coveralls.io/repos/github/ga4gh/gh-openapi-docs/badge.svg?branch=master&service=github)](https://coveralls.io/github/ga4gh/gh-openapi-docs?branch=master&service=github) [![npm](http://img.shields.io/npm/v/gh-openapi-docs.svg)](https://www.npmjs.com/package/gh-openapi-docs) [![License](https://img.shields.io/npm/l/gh-openapi-docs.svg)](https://github.com/ga4gh/gh-openapi-docs/blob/master/LICENSE)
 
 The `gh-openapi-docs` package can be used to build ReDoc API documentation for an OpenAPI specification (no server implementation required) and host on GitHub Pages. Some features and configuration are slightly opinionated, based on experiences developing standard APIs with the [**Global Alliance for Genomics & Health (GA4GH)**](https://www.ga4gh.org/), but should be generalizable to most repos working with Swagger/OpenAPI.
 
