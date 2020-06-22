@@ -2,7 +2,7 @@
 
 See the [**Redoc.ly** docs](https://redoc.ly/docs/resources/multi-file-definitions/) for an overview on working with `$ref`s and structuring multi-file OpenAPI definitions.
 
-For an example of how to employ this organization, refer to [this folder](../test-spec/split):
+For an example of how to employ this organization, refer to [this folder](../test/test-spec/split):
 
 ```
 test/test-spec/split
