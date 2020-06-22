@@ -121,4 +121,6 @@ lib
 !src/lib
 !test/mocha/src/lib
 preview
-docs
+docs/*.html
+docs/*.json
+docs/*.yaml
