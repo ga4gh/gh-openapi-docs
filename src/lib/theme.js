@@ -2,7 +2,7 @@ const ga4gh_theme = {
     "pathInMiddlePanel": true,
     "theme": {
         "spacing": {
-            "sectionVertical": 10
+            "sectionVertical": 20
         },
         "colors": {
             "primary": {
@@ -41,7 +41,13 @@ const ga4gh_theme = {
             },
             "code": {
                 "color": "rgba(227, 74, 58, 1)"
-            }
+            },
+            "headings": {
+                "fontWeight": "600",
+                "lineHeight": "1.2em"            }
+        },
+        "logo": {
+            "gutter": "10px"
         },
         "rightPanel": {
             "backgroundColor": "rgba(66, 66, 66, 1)",
