@@ -72,7 +72,7 @@ Below are some notes about how to organize files in your repo, particularly with
 
 Whether you choose to store all relevant information for your API spec in a single doc or take advantage of YAML/JSON `$ref` resolution to create a more modular directory structure<sup>\*</sup> you'll need a primary entrypoint file for the API docs content. In many cases, this file will be named `openapi.yaml` (or for older versions, `swagger.yaml`), but you can elect to provide a bit more semantic context in the filename (e.g., `workflow_execution_service.openapi.yaml`).
 
-<sup>\*</sup> For more information about how to organize your spec content into multiple subdirectories, see the usage notes in the package `README`.
+<sup>\*</sup> For more information about how to organize your spec content into multiple subdirectories, see the docs on [modular specifications](modular-specs.md).
 
 ### AsciiDoc to Markdown
 
