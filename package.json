@@ -1,7 +1,7 @@
 {
   "name": "gh-openapi-docs",
   "author": "James Eddy <james.a.eddy@gmail.com>",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "license": "Apache-2.0",
   "repository": "github:ga4gh/gh-openapi-docs",
   "main": "./src/lib/index.js",
