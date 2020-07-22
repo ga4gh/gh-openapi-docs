@@ -25,7 +25,7 @@
     "is-ci": "^2.0.0",
     "json-refs": "^3.0.15",
     "loader-utils": "^1.4.0",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "oas-linter": "^3.0.2",
     "oas-resolver": "^2.2.7",
     "oas-validator": "^3.3.3",
