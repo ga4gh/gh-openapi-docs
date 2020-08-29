@@ -1,8 +1,8 @@
-import Logger from './log';
-import Config from './config';
-import { fetchPages } from './gh-pages';
-import bundleSpec from './bundle';
-import { setupUI } from './redoc-ui';
+import Logger from '@lib/log';
+import Config from '@lib/config';
+import { fetchPages } from '@lib/gh-pages';
+import bundleSpec from '@lib/bundle';
+import { setupUI } from '@lib/redoc-ui';
 
 const runTasks = (opts, di) => {
   let container = {};

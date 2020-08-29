@@ -2,8 +2,8 @@
 'use strict';
 import shell from "shelljs";
 import path from 'path';
-import config from './config';
-import Log from './log';
+import config from '@lib/config';
+import Log from '@lib/log';
 
 const log = new Log();
 

@@ -14,9 +14,8 @@ module.exports = {
         alias: {
             '@lib': path.resolve(__dirname, 'src/lib')
         },
-        modules: [
-            'node_modules'
-        ]
+        extensions: ['.js'],
+        modules: ['node_modules']
     },
     module: {
         rules: [

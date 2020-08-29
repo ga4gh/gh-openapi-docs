@@ -1,7 +1,7 @@
 'use strict';
 import shell from 'shelljs';
-import config from './config';
-import Log from './log';
+import config from '@lib/config';
+import Log from '@lib/log';
 import fs from 'fs';
 
 

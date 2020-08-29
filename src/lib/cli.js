@@ -1,5 +1,5 @@
 import pkg from '../../package.json';
-import Log from './log';
+import Log from '@lib/log';
 
 const log = new Log();
 

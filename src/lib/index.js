@@ -1,5 +1,5 @@
-import { version, help } from './cli';
-import runTasks from './tasks';
+import { version, help } from '@lib/cli';
+import runTasks from '@lib/tasks';
 
 const release = async options =>  {
   if (options.version) {
