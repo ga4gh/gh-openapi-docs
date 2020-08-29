@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import Logger from './log';
 import Config from './config';
 import { fetchPages } from './gh-pages';

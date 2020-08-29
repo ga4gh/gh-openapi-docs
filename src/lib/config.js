@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import { merge } from 'lodash';
 import path from 'path';
 import envConfig from './environment'
 import fs from 'fs';
@@ -37,7 +37,7 @@ const deployConfig = {
 };
 // Export the config object based on the NODE_ENV
 // ==============================================
-const config = _.merge(
+const config = merge(
   localConfig,
   envConfig,
   deployConfig
