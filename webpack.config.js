@@ -40,5 +40,9 @@ module.exports = {
     },
     plugins: [
         new webpack.BannerPlugin({ banner: "#!/usr/bin/env node", raw: true })
-    ]
+    ],
+    stats: {
+        // Ignore warnings due to yarg's dynamic module loading
+        warningsFilter: [/node_modules\/yargs/]
+    }
 }
