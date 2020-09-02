@@ -1,7 +1,7 @@
 import '@babel/polyfill';
 // const updater = require('update-notifier');
 import parseArgs from 'yargs-parser';
-import pkg from '../package.json';
+// import pkg from '../package.json';
 import release from './lib';
 
 const aliases = {
