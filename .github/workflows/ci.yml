@@ -8,7 +8,7 @@ on:
   pull_request:
 
 env:
-  node_version: 10.x  # from .travis, what about 12.x (Active LTS)?
+  node_version: 12.x
 
 jobs:
   lint:
@@ -22,3 +22,17 @@ jobs:
     - run: npm install
     - name: Lint project
       run: npm run lint:all
+
+  test:
+    needs: [ lint ]
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ env.node_version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ env.node_version }}
+    - run: npm install
+    - run: npm run test
+    - run: npm run coverage
+    - run: npm run pushCoverageReport
