@@ -14,7 +14,8 @@
     "cleanBuild": "npm run clean && npm run build",
     "test": "npx mocha-webpack --webpack-config webpack.config-test.js --recursive \"src\" \"test/mocha\" --exit",
     "coverage": "npx nyc npm run test",
-    "pushCoverageReport": "npx nyc report --reporter=text-lcov | npx coveralls"
+    "pushCoverageReport": "npx nyc report --reporter=text-lcov | npx coveralls",
+    "lint:all": "echo 1"
   },
   "bin": "./dist/bundle.js",
   "dependencies": {
