@@ -13,20 +13,20 @@ env:
   node_version: 12.x
 
 jobs:
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ env.node_version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ env.node_version }}
-    - run: npm install
-    - name: Lint project
-      run: npm run lint:all
+  # lint:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   - uses: actions/checkout@v2
+  #   - name: Use Node.js ${{ env.node_version }}
+  #     uses: actions/setup-node@v1
+  #     with:
+  #       node-version: ${{ env.node_version }}
+  #   - run: npm install
+  #   - name: Lint project
+  #     run: npm run lint:all
 
   test:
-    needs: [ lint ]
+    # needs: [ lint ]
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
