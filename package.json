@@ -1,5 +1,6 @@
 {
   "name": "@ga4gh/gh-openapi-docs",
+  "description": "Build ReDoc API documentation for an OpenAPI specification and host on GitHub Pages",
   "author": "James Eddy <james.a.eddy@gmail.com>",
   "version": "0.2.1",
   "license": "Apache-2.0",

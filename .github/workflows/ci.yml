@@ -5,6 +5,8 @@ on:
     branches:
       - master
       - develop
+    release:
+      types: [created]
   pull_request:
 
 env:
@@ -36,3 +38,19 @@ jobs:
     - run: npm run test
     - run: npm run coverage
     - run: npm run pushCoverageReport
+
+  publish:
+    if: github.event_name == 'release' && github.event.action == 'created'
+    needs: [ test ]
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ env.node_version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ env.node_version }}
+        registry-url: 'https://registry.npmjs.org'
+    - run: npm install
+    - run: npm publish --access public
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
