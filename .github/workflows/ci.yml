@@ -5,8 +5,9 @@ on:
     branches:
       - master
       - develop
-    release:
-      types: [created]
+  release:
+    types:
+      - created
   pull_request:
 
 env:
