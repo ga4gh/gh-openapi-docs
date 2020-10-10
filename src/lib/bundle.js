@@ -34,11 +34,11 @@ const bundleSpec = async () => {
         'text': `${config.branchPath}/\n`
     });
     shell.exec(
-        `openapi bundle -f --output ${OPENAPI_JSON_PATH} ${config.apiSpecPath}`,
+        `npx openapi bundle -f --output ${OPENAPI_JSON_PATH} ${config.apiSpecPath}`,
         {silent: true}
     );
     shell.exec(
-        `openapi bundle -f --output ${OPENAPI_YAML_PATH} ${config.apiSpecPath}`,
+        `npx openapi bundle -f --output ${OPENAPI_YAML_PATH} ${config.apiSpecPath}`,
         {silent: true}
     );
     shell.rm('-rf', specDir);

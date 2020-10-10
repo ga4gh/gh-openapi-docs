@@ -28,7 +28,7 @@ const setupUI = () => {
         text: `${indexPath}\n`
     });
     shell.exec(
-        `redoc-cli bundle --output ${indexPath} ${OPENAPI_YAML_PATH} ${redocOpts}`,
+        `npx redoc-cli bundle --output ${indexPath} ${OPENAPI_YAML_PATH} ${redocOpts}`,
         {silent: true}
     );
 };
