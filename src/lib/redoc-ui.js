@@ -2,9 +2,9 @@
 'use strict';
 import shell from 'shelljs';
 import path from 'path';
-import config from './config';
-import themes from './theme';
-import Log from './log';
+import config from '@lib/config';
+import themes from '@lib/theme';
+import Log from '@lib/log';
 
 const log = new Log();
 var OPENAPI_YAML_PATH = path.join(config.branchPath, 'openapi.yaml');
