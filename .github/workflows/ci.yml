@@ -38,6 +38,8 @@ jobs:
     - run: npm run test
     - run: npm run coverage
     - run: npm run pushCoverageReport
+      env:
+        COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
 
   publish:
     if: github.event_name == 'release' && github.event.action == 'created'
