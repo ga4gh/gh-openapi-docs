@@ -1,31 +1,30 @@
 import assert from 'assert';
-import {
-    cd,
-    cp,
-    exec,
-    mkdir,
-    rm,
-    subprocess
-} from '@lib/subprocess';
+import subprocess from '@lib/subprocess';
 
 // test cases for runAndAssert function
-let runAndAssertTC = [
-    {command: exec, args: ['ls -1 > /dev/null'], expError: false},
-    {command: exec, args: ['pwd'], expError: false},
-    {command: rm, args: ["-r", "/dir/that/doesnt/exist"], expError: true},
-    {command: cd, args: ["-r", "/dir/that/doesnt/exist"], expError: true},
+let subprocessTC = [
+    {command: subprocess.changeDir, args: ["/dir/that/doesnt/exist"], expError: true},
+    {command: subprocess.makeDirs, args: [".testtmp"], expError: false},
+    {command: subprocess.copy, args: [".testtmp0", ".testtmp1"], expError: true},
+    {command: subprocess.copyDirs, args: [".testtmp", ".testtmp1"], expError: false},
+    {command: subprocess.copyDirsN, args: [".testtmp", ".testtmp2"], expError: false},
+    {command: subprocess.removeDirs, args: [".testtmp"], expError: false},
+    {command: subprocess.removeDirs, args: [".testtmp1"], expError: false},
+    {command: subprocess.removeDirs, args: [".testtmp2"], expError: false},
+    {command: subprocess.removeDirs, args: ["/dir/that/doesnt/exist"], expError: true},
+    {command: subprocess.exec, args: ['ls -1 > /dev/null'], expError: false},
+    {command: subprocess.exec, args: ['pwd'], expError: false},
 ]
 
 describe('subprocess', () => {
-    describe('runAndAssert', () => {
-        it(`asserts runAndAssert throws an error when expected`, () => {
-            runAndAssertTC.forEach(tc => {
-                let subp = subprocess(tc.command, ...tc.args);
+    describe('subprocess', () => {
+        it(`asserts subprocess functions throw an error when expected`, () => {
+            subprocessTC.forEach(tc => {
                 try {
-                    subp.runAndAssert()
+                    tc.command(...tc.args);
                     assert.strictEqual(false, tc.expError);
                 } catch (err) {
-                    assert.strictEqual(true, tc.expError)
+                    assert.strictEqual(true, tc.expError);
                 }
             })
         })

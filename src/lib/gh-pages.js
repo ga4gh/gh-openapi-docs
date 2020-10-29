@@ -3,31 +3,31 @@ import shell from 'shelljs';
 import config from './config';
 import Log from './log';
 import fs from 'fs';
-import {cd, cp, exec, mkdir, rm, subprocess} from './subprocess';
+import subprocess from './subprocess';
 
 const log = new Log();
 
 const fetchPages = () => {
 
-    subprocess(rm, '-rf', '.ghpages-tmp').runAndAssert();
-    subprocess(mkdir, '-p', '.ghpages-tmp').runAndAssert();
+    subprocess.removeDirs('.ghpages-tmp');
+    subprocess.makeDirs('.ghpages-tmp');
     var startDir = shell.pwd();
-    subprocess(cd, '.ghpages-tmp').runAndAssert();
+    subprocess.changeDir('.ghpages-tmp');
 
     log.log(`\nCloning 'gh-pages' branch into '${shell.pwd().stdout}'`);
 
-    subprocess(exec, `git clone --depth=1 --branch=gh-pages ${config.repoOrigin} .`).runAndAssert();
+    subprocess.exec(`git clone --depth=1 --branch=gh-pages ${config.repoOrigin} .`);
 
     if (fs.existsSync(config.branchPathBase)) {
-        subprocess(cp, '-Rn', config.branchPathBase, config.root).runAndAssert();
+        subprocess.copyDirsN(config.branchPathBase, config.root);
     }
     if (fs.existsSync(config.docsRoot)) {
-        subprocess(cp, '-Rn', config.docsRoot, config.root).runAndAssert();
-        subprocess(cp, '-Rn', 'openapi.*', config.root);
+        subprocess.copyDirsN(config.docsRoot, config.root);
+        subprocess.copyDirsN('openapi.*', config.root);
     }
 
-    subprocess(cd, startDir).runAndAssert();
-    subprocess(rm, '-rf', '.ghpages-tmp').runAndAssert();
+    subprocess.changeDir(startDir);
+    subprocess.removeDirs('.ghpages-tmp');
 };
 
 export { fetchPages };

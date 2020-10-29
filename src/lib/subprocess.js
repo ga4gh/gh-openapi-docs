@@ -35,15 +35,14 @@ class Subprocess {
     }
 }
 
-const subprocess = (command, ...args) => new Subprocess(command, ...args);
-
-export {
-    cd,
-    cp,
-    exec,
-    mkdir,
-    rm,
-    subprocess
+const subprocess = {
+    changeDir: (...args) => new Subprocess(cd, ...args).runAndAssert(),
+    makeDirs: (...args) => new Subprocess(mkdir, '-p', ...args).runAndAssert(),
+    copy: (...args) => new Subprocess(cp, ...args).runAndAssert(),
+    copyDirs: (...args) => new Subprocess(cp, '-R', ...args).runAndAssert(),
+    copyDirsN: (...args) => new Subprocess(cp, '-Rn', ...args).runAndAssert(),
+    removeDirs: (...args) => new Subprocess(rm, '-rf', ...args).runAndAssert(),
+    exec: (...args) => new Subprocess(exec, ...args).runAndAssert()
 }
 
-export default subprocess
+export default subprocess;

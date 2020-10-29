@@ -3,7 +3,7 @@
 import path from 'path';
 import config from './config';
 import Log from './log';
-import {cp, exec, mkdir, rm, subprocess} from './subprocess';
+import subprocess from './subprocess';
 
 const log = new Log();
 
@@ -16,9 +16,9 @@ const bundleSpec = () => {
         'text': `${config.branchPath}/`
     })
 
-    subprocess(mkdir, '-p', config.branchPath).runAndAssert();
+    subprocess.makeDirs(config.branchPath);
     var specDir = path.join(config.root, 'spec');
-    subprocess(mkdir, '-p', specDir).runAndAssert();
+    subprocess.makeDirs(specDir);
     var specPath = path.join(config.root, config.apiSpecPath);
     
     log.preview({
@@ -26,7 +26,7 @@ const bundleSpec = () => {
         'text': specPath
     })
 
-    subprocess(cp, specPath, path.join(config.root, 'spec/openapi.yaml')).runAndAssert();
+    subprocess.copy(specPath, path.join(config.root, 'spec/openapi.yaml'));
 
     log.info("\nBundling API spec...");
     log.preview({
@@ -34,9 +34,9 @@ const bundleSpec = () => {
         'text': `${config.branchPath}/\n`
     });
 
-    subprocess(exec, `npx openapi bundle -f --output ${OPENAPI_JSON_PATH} ${config.apiSpecPath}`).runAndAssert();
-    subprocess(exec, `npx openapi bundle -f --output ${OPENAPI_YAML_PATH} ${config.apiSpecPath}`).runAndAssert();
-    subprocess(rm, '-rf', specDir);
+    subprocess.exec(`npx openapi bundle -f --output ${OPENAPI_JSON_PATH} ${config.apiSpecPath}`);
+    subprocess.exec(`npx openapi bundle -f --output ${OPENAPI_YAML_PATH} ${config.apiSpecPath}`);
+    subprocess.removeDirs(specDir);
 };
 
 export default bundleSpec;
