@@ -25,7 +25,7 @@ module.exports = {
                 use: [
                     {
                         loader: 'istanbul-instrumenter-loader',
-                        query: {
+                        options: {
                             esModules: true
                         }
                     },
