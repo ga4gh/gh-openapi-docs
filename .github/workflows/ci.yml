@@ -10,7 +10,7 @@ on:
   pull_request:
 
 env:
-  node_version: 12.x
+  node_version: 14.x
 
 jobs:
   # lint:
@@ -37,7 +37,7 @@ jobs:
     - run: npm install
     - run: npm run test
     - run: npm run coverage
-    - run: npm run pushCoverageReport
+    # - run: npm run pushCoverageReport
 
   publish:
     if: github.event_name == 'release' && github.event.action == 'created'
