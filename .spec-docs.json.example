@@ -1,0 +1,7 @@
+{
+    "apiSpecPath": "test/test-spec/combined/openapi.yaml",
+    "contactUrl": "",
+    "docsRoot": "docs",
+    "defaultBranch": "",
+    "branchPathBase": "preview"
+}

@@ -15,7 +15,7 @@ const fetchPages = () => {
     log.log(`\nCloning 'gh-pages' branch into '${shell.pwd().stdout}'`);
     shell.exec(
         `git clone --depth=1 --branch=gh-pages ${config.repoOrigin} .`,
-        {silent: true}
+        {silent: false}
     );
     shell.cp('-Rn', config.branchPathBase, config.root);
     if (fs.existsSync(config.docsRoot)) {
