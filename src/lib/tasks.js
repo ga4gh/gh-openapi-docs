@@ -14,10 +14,14 @@ const runTasks = (opts, di) => {
     container.log = container.log || new Logger();
     const { log } = container;
 
-    log.info(`Preparing docs for API spec at '${container.config.apiSpecPath}' (${container.config.branch})`);
+    log.info(`Fetching current gh-pages branch`)
     fetchPages();
-    bundleSpec();
-    setupUI();
+
+    Config.buildPages.forEach(buildPage => {
+      log.info(`Preparing docs for API spec at '${buildPage.apiSpecPath}' (${container.config.branch})`);
+      bundleSpec(buildPage);
+      setupUI(buildPage);
+    })
 
     log.log(`Done (in ${Math.floor(process.uptime())}s.)`);
 

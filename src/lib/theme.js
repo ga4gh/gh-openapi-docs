@@ -1,5 +1,6 @@
 const ga4gh_theme = {
     "pathInMiddlePanel": true,
+    "noAutoAuth": true,
     "theme": {
         "spacing": {
             "sectionVertical": 20

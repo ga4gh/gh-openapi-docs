@@ -7,10 +7,7 @@ import Log from './log';
 
 const log = new Log();
 
-var OPENAPI_JSON_PATH = path.join(config.branchPath, 'openapi.json');
-var OPENAPI_YAML_PATH = path.join(config.branchPath, 'openapi.yaml');
-
-const bundleSpec = async () => {
+const bundleSpec = async buildPage => {
     log.preview({
         'title': '\nBranch folder',
         'text': `${config.branchPath}/`
@@ -19,7 +16,9 @@ const bundleSpec = async () => {
     var specDir = path.join(config.root, 'spec');
     shell.mkdir('-p', specDir);
 
-    var specPath = path.join(config.root, config.apiSpecPath);
+    let specPath = path.join(config.root, buildPage.apiSpecPath);
+    let openApiJsonPath = path.join(config.branchPath, buildPage.jsonOutfile);
+    let openApiYamlPath = path.join(config.branchPath, buildPage.yamlOutfile);;
 
     log.preview({
         'title': '\nAPI spec (root) location',
@@ -34,11 +33,11 @@ const bundleSpec = async () => {
         'text': `${config.branchPath}/\n`
     });
     shell.exec(
-        `npx openapi bundle -f --output ${OPENAPI_JSON_PATH} ${config.apiSpecPath}`,
+        `npx openapi bundle -f --output ${openApiJsonPath} ${specPath}`,
         {silent: true}
     );
     shell.exec(
-        `npx openapi bundle -f --output ${OPENAPI_YAML_PATH} ${config.apiSpecPath}`,
+        `npx openapi bundle -f --output ${openApiYamlPath} ${specPath}`,
         {silent: true}
     );
     shell.rm('-rf', specDir);
