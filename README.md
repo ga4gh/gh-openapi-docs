@@ -31,29 +31,53 @@ npm install -g @ga4gh/gh-openapi-docs
 
 ## Configuration
 
-You should add a file named `.spec-docs.json` to the top level of your repo. The following parameters can currently be configured to modify the behavior of the `gh-openapi-docs` build; however, I recommend leaving the defaults for everything except `apiSpecPath` (which will be specific to how and where you've stored the root OpenAPI file).
+You should add a JSON config file to your repo. We recommend naming the file `.spec-docs.json` and placing it at the top level of you repo, as the application reads from this file by default.
+
+You may name the file anything, provided it is specified in the command via the `--config` option. For example, for a config file named `my-docs-config.json`, you would run:
+
+```
+gh-openapi-docs --config my-docs-config.json
+```
+
+The following parameters can currently be configured to modify the behavior of the `gh-openapi-docs` build. We recommend leaving the defaults for `docsRoot`, `defaultBranch`, and `branchPathBase`, while overriding the values of the other properties.
 
 ```json
 {
-    "apiSpecPath": "openapi/openapi.yaml",
     "docsRoot": "docs",
     "defaultBranch": "master",
-    "branchPathBase": "preview"
+    "branchPathBase": "preview",
+    "redocTheme": "ga4gh",
+    "buildPages": [
+        {
+            "apiSpecPath": "openapi/openapi.yaml",
+            "htmlOutfile": "index.html",
+            "yamlOutfile": "openapi.yaml",
+            "jsonOutfile": "openapi.json"
+        }
+    ]
 }
 ```
 
-+ **`apiSpecPath`:** relative path to the OpenAPI spec root file | default: `"openapi/openapi.yaml"` (i.e., `<repoRoot>/openapi/openapi.yaml`)
 + **`docsRoot`:** folder `dirname` and path for where rendered outputs are to be stored | default: `"docs"` (i.e., `<repoRoot>/docs/` or `<repoRoot>/preview/<branchName>/docs/` depending on the active branch)
 + **`defaultBranch`:** the default branch, typically as defined in your GitHub settings for the repo; however, the package doesn't explicitly check these settings, so consider "default" to indicate which version is hosted at `https://ga4gh.github.io/<repoName>/docs`, whereas all content for all other branches will be hosted at `https://ga4gh.github.io/<repoName>/preview/<branchName>/docs` | default: `"master"`
 + **`branchPathBase`:** name used for the folder where content for any non-default branches will be stored and hosted | default: `"preview"`
++ **`redocTheme`**: render HTML documentation using a preconfigured themes | Accepted values: `default`, `ga4gh` | default: `"default"`
++ **`buildPages`**: a list of `buildPage` objects
+  - Each `buildPage` object indicates an OpenAPI document in the repo that will be bundled and rendered as HTML.
+  - `buildPage` properties:
+    * `apiSpecPath`: relative path to the OpenAPI spec root file
+    * `htmlOutfile`: bundled, human-readable output file name (do not indicate path, HTML doc will be written to directory based on Github branch)
+    * `yamlOutfile`: bundled YAML spec output file name (do not indicate path, YAML doc will be written to directory based on Github branch)
+    * `jsonOutfile`: bundled JSON spec output file name (do not indicate path, JSON doc will be written to directory based on Github branch)
+
 
 ## Outputs
 
-This package is designed to create artifacts in the following path(s):
+This package is designed to create 3 artifacts per `buildPage` entry in the config file. Artifacts will be written to the following path(s):
 
-- `{branchPath}/docs/index.html`
-- `{branchPath}/openapi.json`
-- `{branchPath}/openapi.yaml`
+- `{branchPath}/docs/{htmlOutfile}` -> bundled HTML documentation
+- `{branchPath}/{yamlOutfile}` -> bundled YAML spec
+- `{branchPath}/{jsonOutfile}` -> bundled JSON spec
 
 Where `branchPath` is the repo root if the current branch is `defaultBranch` (typically `master`), otherwise `preview/<branchName>`.
 

@@ -20,7 +20,7 @@ const localConfig = {
   contactUrl: userConfig.contactUrl || '',
   buildPages : userConfig.buildPages || [
     {
-      'apiSpecPath': '',
+      'apiSpecPath': 'openapi/openapi.yaml',
       'htmlOutfile': 'index.html',
       'yamlOutfile': 'openapi.yaml',
       'jsonOutfile': 'openapi.json'
