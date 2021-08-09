@@ -37,7 +37,12 @@ jobs:
     - run: npm install
     - run: npm run test
     - run: npm run coverage
-    - run: npm run pushCoverageReport
+    - uses: actions/setup-node@v1
+      with:
+        repo-token: ${{ github.token }}
+        repository: ${{ github.repository }}
+        GITHUB_TOKEN: ${{ github.token }}
+      run: npm run pushCoverageReport
 
   publish:
     if: github.event_name == 'release' && github.event.action == 'created'
