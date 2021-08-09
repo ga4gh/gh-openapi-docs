@@ -37,7 +37,7 @@ jobs:
     - run: npm install
     - run: npm run test
     - run: npm run coverage
-    - with:
+    - env:
         repo-token: ${{ github.token }}
         repository: ${{ github.repository }}
         GITHUB_TOKEN: ${{ github.token }}
