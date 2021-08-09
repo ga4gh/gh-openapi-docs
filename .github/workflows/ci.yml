@@ -37,8 +37,7 @@ jobs:
     - run: npm install
     - run: npm run test
     - run: npm run coverage
-    - uses: actions/setup-node@v1
-      with:
+    - with:
         repo-token: ${{ github.token }}
         repository: ${{ github.repository }}
         GITHUB_TOKEN: ${{ github.token }}
