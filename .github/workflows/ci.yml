@@ -41,7 +41,7 @@ jobs:
         repo-token: ${{ github.token }}
         repository: ${{ github.repository }}
         GITHUB_TOKEN: ${{ github.token }}
-        COVERALLS_REPO_TOKEN: ELzQ3k2Q6GSqTMswxZZELArq3YEc6J1UM
+        COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
       run: npm run pushCoverageReport
 
   publish:
