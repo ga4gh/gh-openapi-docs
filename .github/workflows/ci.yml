@@ -12,7 +12,7 @@ env:
   node_version: 12.x
 
 jobs:
-  test:
+  testAndCoverage:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -22,24 +22,19 @@ jobs:
           node-version: ${{ env.node_version }}
       - run: npm install
       - run: npm run test
-  
-  coverage:
-    if: ${{ github.event_name != 'pull_request' }}
-    needs: [ test ]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - run: npm run coverage
-      - env:
+      - if: ${{ github.event_name != 'pull_request' }}
+        run: npm run coverage
+      - if: ${{ github.event_name != 'pull_request' }}
+        env:
           repo-token: ${{ github.token }}
           repository: ${{ github.repository }}
           GITHUB_TOKEN: ${{ github.token }}
           COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
         run: npm run pushCoverageReport
-
+  
   publish:
     if: github.event_name == 'release' && github.event.action == 'created'
-    needs: [ test, coverage ]
+    needs: [ testAndCoverage ]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
