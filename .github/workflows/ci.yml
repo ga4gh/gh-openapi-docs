@@ -8,50 +8,43 @@ on:
     types:
       - created
   pull_request:
-
 env:
   node_version: 12.x
 
 jobs:
-  # lint:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #   - uses: actions/checkout@v2
-  #   - name: Use Node.js ${{ env.node_version }}
-  #     uses: actions/setup-node@v1
-  #     with:
-  #       node-version: ${{ env.node_version }}
-  #   - run: npm install
-  #   - name: Lint project
-  #     run: npm run lint:all
-
-  test:
-    # needs: [ lint ]
+  testAndCoverage:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ env.node_version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ env.node_version }}
-    - run: npm install
-    - run: npm run test
-    - run: npm run coverage
-    - run: npm run pushCoverageReport
-
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ env.node_version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ env.node_version }}
+      - run: npm install
+      - run: npm run test
+      - if: ${{ github.event_name != 'pull_request' }}
+        run: npm run coverage
+      - if: ${{ github.event_name != 'pull_request' }}
+        env:
+          repo-token: ${{ github.token }}
+          repository: ${{ github.repository }}
+          GITHUB_TOKEN: ${{ github.token }}
+          COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
+        run: npm run pushCoverageReport
+  
   publish:
     if: github.event_name == 'release' && github.event.action == 'created'
-    needs: [ test ]
+    needs: [ testAndCoverage ]
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ env.node_version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ env.node_version }}
-        registry-url: 'https://registry.npmjs.org'
-    - run: npm install
-    - run: npm run build
-    - run: npm publish --access public
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ env.node_version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ env.node_version }}
+          registry-url: 'https://registry.npmjs.org'
+      - run: npm install
+      - run: npm run build
+      - run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

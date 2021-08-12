@@ -2,21 +2,30 @@ import { merge } from 'lodash';
 import path from 'path';
 import envConfig from './environment'
 import fs from 'fs';
+import cliOpts from './cli';
+
 /*eslint no-process-env:0*/
 
 // All configurations will extend these options
 // ============================================
-const userConfigPath = `${envConfig.root}/.spec-docs.json`;
-const userConfig = fs.existsSync(userConfigPath) ? JSON.parse(fs.readFileSync(userConfigPath)) : {};
+
+const userConfig = fs.existsSync(cliOpts.config) ? JSON.parse(fs.readFileSync(cliOpts.config)) : {};
 const localConfig = {
-  apiSpecPath: userConfig.apiSpecPath || '',
   docsRoot: userConfig.docsRoot || 'docs',
   uiRoot: userConfig.uiRoot || 'swagger-ui',
   redocRoot: userConfig.redocRoot || 'redoc-ui',
   redocTheme: userConfig.redocTheme || 'default',
   defaultBranch: userConfig.defaultBranch || 'master',
   branchPathBase: userConfig.branchPath || 'preview',
-  contactUrl: userConfig.contactUrl || ''
+  contactUrl: userConfig.contactUrl || '',
+  buildPages : userConfig.buildPages || [
+    {
+      'apiSpecPath': 'openapi/openapi.yaml',
+      'htmlOutfile': 'index.html',
+      'yamlOutfile': 'openapi.yaml',
+      'jsonOutfile': 'openapi.json'
+    }
+  ]
 };
 
 const constructBranchPath = (defaultBranch, currentBranch, root, branchPathBase) => {
