@@ -7,7 +7,6 @@ import themes from './theme';
 import Log from './log';
 
 const log = new Log();
-var OPENAPI_YAML_PATH = path.join(config.branchPath, 'openapi.yaml');
 
 const constructOptsArg = (themes, themeName) => {
     if (themeName == 'default') {
@@ -18,17 +17,19 @@ const constructOptsArg = (themes, themeName) => {
     }
 }
 
-const setupUI = () => {
+const setupUI = buildPage => {
     var redocOpts = constructOptsArg(themes, config.redocTheme);
     var uiPath = path.join(config.branchPath, config.docsRoot);
     shell.mkdir('-p', uiPath);
-    var indexPath = path.join(uiPath, 'index.html');
+    var indexPath = path.join(uiPath, buildPage.htmlOutfile);
+    let openApiYamlPath = path.join(config.branchPath, buildPage.yamlOutfile);
     log.preview({
         title: 'Generating standalone ReDoc HTML',
         text: `${indexPath}\n`
     });
+    
     shell.exec(
-        `npx redoc-cli bundle --output ${indexPath} ${OPENAPI_YAML_PATH} ${redocOpts}`,
+        `npx redoc-cli bundle --output ${indexPath} ${openApiYamlPath} ${redocOpts}`,
         {silent: true}
     );
 };

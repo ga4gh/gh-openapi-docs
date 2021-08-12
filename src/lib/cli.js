@@ -1,16 +1,14 @@
 import pkg from '../../package.json';
-import Log from './log';
+import { Command } from 'commander';
+import process from 'process';
 
-const log = new Log();
+const program = new Command();
+program.version(pkg.version);
+program
+  .option('-c --config <config>', `Path to local configuration options [default: ".spec-docs.json"]`, ".spec-docs.json")
+  .option('-d --dry-run [bool]', `Do not touch or write anything, but show the commands`, false)
+  .option('-v --verbose [bool]', `Verbose output`, false);
+program.parse(process.argv)
+let cliOpts = program.opts();
 
-const helpText = `Cloud Schema Docs - v${pkg.version}
-  Usage: cloud-schema-docs [options]
-  -c --config            Path to local configuration options [default: ".spec-docs.json"]
-  -d --dry-run           Do not touch or write anything, but show the commands
-  -h --help              Print this help
-  -v --version           Print version number
-  -V --verbose           Verbose output`;
-
-const version = () => log.log(`v${pkg.version}`);
-const help = () => log.log(helpText);
-export { version, help };
+export default cliOpts;
