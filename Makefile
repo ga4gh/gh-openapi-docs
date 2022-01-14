@@ -6,3 +6,7 @@ Nothing:
 .PHONY: docker-build
 docker-build:
 	@docker build -t ga4gh/gh-openapi-docs:${VERSION} .
+
+.PHONY: docker-publish
+docker-publish:
+	@docker push ga4gh/gh-openapi-docs:${VERSION}
