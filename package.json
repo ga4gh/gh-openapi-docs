@@ -33,7 +33,7 @@
     "oas-validator": "^3.3.3",
     "redoc-cli": "^0.9.7",
     "remote-origin-url": "^2.0.0",
-    "shelljs": "^0.7.0",
+    "shelljs": "^0.8.5",
     "swagger-ui-dist": "3.24.0",
     "update-notifier": "3.0.1",
     "yargs-parser": "^19.0.4",
