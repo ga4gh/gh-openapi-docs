@@ -25,14 +25,15 @@ const localConfig = {
       'yamlOutfile': 'openapi.yaml',
       'jsonOutfile': 'openapi.json'
     }
-  ]
+  ],
+  outputDir: cliOpts.outputDir || 'publish'
 };
 
-const constructBranchPath = (defaultBranch, currentBranch, root, branchPathBase) => {
+const constructBranchPath = (defaultBranch, currentBranch, root, outputDir, branchPathBase) => {
   if (currentBranch == defaultBranch) {
-    return root;
+    return path.join(root, outputDir);
   } else {
-    return path.join(root, branchPathBase, currentBranch.toLowerCase())
+    return path.join(root, outputDir, branchPathBase, currentBranch.toLowerCase())
   }
 };
 
@@ -41,6 +42,7 @@ const deployConfig = {
     localConfig.defaultBranch,
     envConfig.branch,
     envConfig.root,
+    localConfig.outputDir,
     localConfig.branchPathBase
   )
 };
