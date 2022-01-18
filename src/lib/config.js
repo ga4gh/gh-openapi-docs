@@ -26,24 +26,20 @@ const localConfig = {
       'jsonOutfile': 'openapi.json'
     }
   ],
+  workingDir: process.env.PWD,
   outputDir: cliOpts.outputDir || 'publish'
 };
 
-const constructBranchPath = (defaultBranch, currentBranch, root, outputDir, branchPathBase) => {
-  if (currentBranch == defaultBranch) {
-    return path.join(root, outputDir);
-  } else {
-    return path.join(root, outputDir, branchPathBase, currentBranch.toLowerCase())
-  }
+const constructBranchPath = (workingDir, outputDir, branchPathBase, currentBranch) => {
+  return path.join(workingDir, outputDir, branchPathBase, currentBranch.toLowerCase())
 };
 
 const deployConfig = {
   branchPath: constructBranchPath(
-    localConfig.defaultBranch,
-    envConfig.branch,
-    envConfig.root,
+    localConfig.pwd,
     localConfig.outputDir,
-    localConfig.branchPathBase
+    localConfig.branchPathBase,
+    envConfig.branch
   )
 };
 // Export the config object based on the NODE_ENV
