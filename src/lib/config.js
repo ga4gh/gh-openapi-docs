@@ -26,7 +26,7 @@ const localConfig = {
       'jsonOutfile': 'openapi.json'
     }
   ],
-  workingDir: process.env.PWD,
+  workingDir: process.cwd(), // process.env.PWD,
   outputDir: cliOpts.outputDir || 'publish'
 };
 

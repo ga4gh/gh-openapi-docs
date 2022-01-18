@@ -29,8 +29,8 @@ const setupUI = buildPage => {
     });
     
     shell.exec(
-        `npx redoc-cli bundle --output ${indexPath} ${openApiYamlPath} ${redocOpts}`,
-        {silent: true}
+        `redoc-cli bundle --output ${indexPath} ${openApiYamlPath} ${redocOpts}`,
+        {silent: false}
     );
 };
 

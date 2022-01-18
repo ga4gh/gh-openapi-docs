@@ -33,12 +33,12 @@ const bundleSpec = async buildPage => {
         'text': `${config.branchPath}/\n`
     });
     shell.exec(
-        `npx openapi bundle -f --output ${openApiJsonPath} ${specPath}`,
-        {silent: true}
+        `openapi bundle -f --output ${openApiJsonPath} ${specPath}`,
+        {silent: false}
     );
     shell.exec(
-        `npx openapi bundle -f --output ${openApiYamlPath} ${specPath}`,
-        {silent: true}
+        `openapi bundle -f --output ${openApiYamlPath} ${specPath}`,
+        {silent: false}
     );
     shell.rm('-rf', specDir);
 };
