@@ -36,12 +36,13 @@ const constructBranchPath = (workingDir, outputDir, branchPathBase, currentBranc
 
 const deployConfig = {
   branchPath: constructBranchPath(
-    localConfig.pwd,
+    localConfig.workingDir,
     localConfig.outputDir,
     localConfig.branchPathBase,
     envConfig.branch
   )
 };
+
 // Export the config object based on the NODE_ENV
 // ==============================================
 const config = merge(
