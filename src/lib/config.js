@@ -25,25 +25,24 @@ const localConfig = {
       'yamlOutfile': 'openapi.yaml',
       'jsonOutfile': 'openapi.json'
     }
-  ]
+  ],
+  workingDir: process.cwd(), // process.env.PWD,
+  outputDir: cliOpts.outputDir || 'publish'
 };
 
-const constructBranchPath = (defaultBranch, currentBranch, root, branchPathBase) => {
-  if (currentBranch == defaultBranch) {
-    return root;
-  } else {
-    return path.join(root, branchPathBase, currentBranch.toLowerCase())
-  }
+const constructBranchPath = (workingDir, outputDir, branchPathBase, currentBranch) => {
+  return path.join(workingDir, outputDir, branchPathBase, currentBranch.toLowerCase())
 };
 
 const deployConfig = {
   branchPath: constructBranchPath(
-    localConfig.defaultBranch,
-    envConfig.branch,
-    envConfig.root,
-    localConfig.branchPathBase
+    localConfig.workingDir,
+    localConfig.outputDir,
+    localConfig.branchPathBase,
+    envConfig.branch
   )
 };
+
 // Export the config object based on the NODE_ENV
 // ==============================================
 const config = merge(
