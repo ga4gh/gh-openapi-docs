@@ -6,9 +6,11 @@ updates:
     schedule:
       interval: "monthly"
     target-branch: "develop"
+    open-pull-requests-limit: 0
 
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
       interval: "monthly"
     target-branch: "develop"
+    open-pull-requests-limit: 0
